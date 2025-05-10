@@ -100,4 +100,9 @@ A comprehensive list of custom filters for Logger++ to identify various vulnerab
 	  - ```!(Request.Headers CONTAINS "Authorization:") AND (Response.Headers CONTAINS "Access-Control-Allow-Credentials" OR Response.Headers CONTAINS "Access-Control-Allow-Origin")```
   - Unrestricted Resource Consumption
 	  - ```Request.Body CONTAINS "limit" OR Request.Body CONTAINS "filter" OR Request.Body CONTAINS "offset" OR Request.Body CONTAINS "first" OR Request.Body CONTAINS "after" OR Request.Body CONTAINS "last" OR Request.Body CONTAINS "max" OR Request.Body CONTAINS "total" OR Request.Query CONTAINS "limit" OR Request.Query CONTAINS "filter" OR Request.Query CONTAINS "offset" OR Request.Query CONTAINS "first" OR Request.Query CONTAINS "after" OR Request.Query CONTAINS "last" OR Request.Query CONTAINS "max" OR Request.Query CONTAINS "total"```
+-  Web Cache Deception
+	  - ```Request.Path MATCHES "^.*\.(?i)(html|7z|apk|avif|avi|bin|bmp|bz2|class|css|csv|doc|docx|dmg|ejs|eot|eps|exe|flac|gif|gz|ico|iso|jar|jpeg|jpg|js|mid|midi|mkv|mp3|mp4|otf|pdf|pict|pls|png|ppt|pptx|ps|rar|svg|svgz|swf|tar|tif|tiff|ttf|webm|webp|woff|woff2|xls|xlsx|zst|zip)(\?.*)?$"```
+-  Web Cache Poisoning
 
+   Burp > Settings > Proxy > HTTP match and replace rules > Add > Type: Request header | Match: {Blank} | Replace: X-Forwarded-Host: evil.com | Comment: Web Cache Deception > OK
+	  - ```Request.Headers CONTAINS "evil.com" AND Response.Body CONTAINS "evil.com" and request.headers contains "Authorization"```
