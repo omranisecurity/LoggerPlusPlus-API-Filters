@@ -105,4 +105,4 @@ A comprehensive list of custom filters for Logger++ to identify various vulnerab
 -  Web Cache Poisoning
 
    Burp > Settings > Proxy > HTTP match and replace rules > Add > Type: Request header | Match: {Blank} | Replace: X-Forwarded-Host: evil.com | Comment: Web Cache Deception > OK
-	  - ```Request.Headers CONTAINS "evil.com" AND Response.Body CONTAINS "evil.com" and request.headers contains "Authorization"```
+	  - ```Request.Headers CONTAINS "evil.com" AND Response.Body CONTAINS "evil.com"```
